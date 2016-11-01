@@ -24,7 +24,7 @@ syntax match firrtlConnect "\v^\s+.+\s+\<[\=\-]\s+.*$" contains=firrtlConnectOpe
 " The invalidate statement, IsInvalid
 " E.g.:   x is invalid
 syntax match firrtlInvalidOperator "\vis\sinvalid" contained
-syntax match firrtlInvalid "\v^\s+.+\s+is\sinvalid\s+.*$" contains=firrtlInvalidOperator
+syntax match firrtlInvalid "\v^\s+.+\s+is\sinvalid\s*.*$" contains=firrtlInvalidOperator
 
 " Many statement/port declarations, as well as when/else
 " E.g.:   wire x : UInt<1>
