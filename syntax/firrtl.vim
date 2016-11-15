@@ -63,7 +63,7 @@ syntax keyword firrtlSim printf stop contained
 " E.g.: circuit Top :
 " E.g.:   module Top :
 syntax keyword firrtlCircuit circuit nextgroup=firrtlName skipwhite
-syntax keyword firrtlModule module nextgroup=firrtlName skipwhite
+syntax keyword firrtlModule module extmodule nextgroup=firrtlName skipwhite
 syntax match firrtlName "[^ =:;([]\+" contained nextgroup=firrtlColon skipwhite
 
 " Match colon
