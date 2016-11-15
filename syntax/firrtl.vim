@@ -90,7 +90,7 @@ syntax region firrtlBundleType matchgroup=Type start=/\v\{/ end=/\v\}/ contains=
 
 "===== Other Primitives =====
 syntax match firrtlComment "\v;.*$" containedin=firrtlConnect,firrtlInvalid,firrtlNode,firrtlDec,firrtlReg,firrtlMPort,firrtlSim,firrtlSkip,firrtlWhen
-syntax match firrtlInfo "\v\@\[\p+ [0-9]+\:[0-9]+\]" containedin=firrtlNode,firrtlInvalid,firrtlConnect,firrtlDec,firrtlReg,firrtlMPort,firrtlSim,firrtlSkip,firrtlWhen
+syntax region firrtlInfo start="\v\@\[" skip="\v\\." end="\v\]" containedin=firrtlNode,firrtlInvalid,firrtlConnect,firrtlDec,firrtlReg,firrtlMPort,firrtlSim,firrtlSkip,firrtlWhen
 syntax region firrtlString start=/\v"/ skip=/\v\\./ end=/\v"/ containedin=firrtlLiteral,firrtlPrintf,firrtlDec,firrtlReg,firrtlMPort,firrtlSim,firrtlWhen
 syntax match firrtlNumber "\v<\d+>" containedin=firrtlConnect,firrtlInvalid,firrtlNode,firrtlDec,firrtlReg,firrtlMPort,firrtlSim,firrtlLiteral,firrtlWhen
 
