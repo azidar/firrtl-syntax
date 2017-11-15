@@ -41,6 +41,11 @@ syntax match firrtlWhen "\v^\s*(when\s+.*\s*\:|else\s+.*\s*\:|else\:)\s*.*$" con
 syntax keyword firrtlDecKeyword output input wire cmem smem when else contained
 syntax match firrtlDec "\v^\s*(output|input|wire|cmem|smem)\s+\w+\s*\:\s*.*$" contains=firrtlDecKeyword,firrtlColon
 
+" Many statement/port declarations, as well as when/else
+" E.g.:   inst x of y
+syntax keyword firrtlInstKeyword inst of contained
+syntax match firrtlInst "\v^\s*inst\s+\w+\s*of\s*.*$" contains=firrtlInstKeyword
+
 " Register declaration, DefRegister
 " E.g.:   reg x : UInt<1>, clock with : (reset => (r, i))
 syntax match firrtlRegSpecialKeywords "\v(with|reset \=\>)" contained
@@ -117,6 +122,7 @@ highlight link firrtlRegSpecialKeywords Keyword
 highlight link firrtlRegKeyword Keyword
 highlight link firrtlColon Statement
 highlight link firrtlDecKeyword Statement
+highlight link firrtlInstKeyword Statement
 highlight link firrtlWhenKeyword Statement
 highlight link firrtlInvalidOperator Statement
 highlight link firrtlConnectOperator Statement
