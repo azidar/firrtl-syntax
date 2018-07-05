@@ -44,7 +44,7 @@ syntax match firrtlDec "\v^\s*(output|input|wire|cmem|smem)\s+\w+\s*\:\s*.*$" co
 " Many statement/port declarations, as well as when/else
 " E.g.:   inst x of y
 syntax keyword firrtlInstKeyword inst of contained
-syntax match firrtlInst "\v^\s*inst\s+\w+\s*of\s*.*$" contains=firrtlInstKeyword
+syntax match firrtlInst "\v^\s*inst\s+\w+\s+of\s+\w+\s*.*$" contains=firrtlInstKeyword
 
 " Register declaration, DefRegister
 " E.g.:   reg x : UInt<1>, clock with : (reset => (r, i))
@@ -75,7 +75,7 @@ syntax match firrtlName "[^ =:;([]\+" contained nextgroup=firrtlColon skipwhite
 syntax match firrtlColon "\v\:" contained
 
 "===== Primops ====
-syntax keyword firrtlPrimOp    add sub mul div mod contained
+syntax keyword firrtlPrimOp    add sub mul div rem contained
 syntax keyword firrtlPrimOp    eq neq geq gt leq lt contained
 syntax keyword firrtlPrimOp    dshl dshr shl shr contained
 syntax keyword firrtlPrimOp    not and or xor andr orr xorr contained
@@ -94,10 +94,10 @@ syntax match firrtlVectorType "\v(\[[0-9]+\])+" contained containedin=firrtlDec,
 syntax region firrtlBundleType matchgroup=Type start=/\v\{/ end=/\v\}/ contains=firrtlBundleType,firrtlFlip,firrtlGroundType,firrtlVectorType containedin=firrtlDec,firrtlReg
 
 "===== Other Primitives =====
-syntax match firrtlComment "\v;.*$" containedin=firrtlConnect,firrtlInvalid,firrtlNode,firrtlDec,firrtlReg,firrtlMPort,firrtlSim,firrtlSkip,firrtlWhen
-syntax region firrtlInfo start="\v\@\[" skip="\v\\." end="\v\]" containedin=firrtlNode,firrtlInvalid,firrtlConnect,firrtlDec,firrtlReg,firrtlMPort,firrtlSim,firrtlSkip,firrtlWhen
-syntax region firrtlString start=/\v"/ skip=/\v\\./ end=/\v"/ containedin=firrtlLiteral,firrtlPrintf,firrtlDec,firrtlReg,firrtlMPort,firrtlSim,firrtlWhen
-syntax match firrtlNumber "\v<\d+>" containedin=firrtlConnect,firrtlInvalid,firrtlNode,firrtlDec,firrtlReg,firrtlMPort,firrtlSim,firrtlLiteral,firrtlWhen
+syntax match firrtlComment "\v;.*$" containedin=firrtlConnect,firrtlInvalid,firrtlNode,firrtlDec,firrtlInst,firrtlReg,firrtlMPort,firrtlSim,firrtlSkip,firrtlWhen
+syntax region firrtlInfo start="\v\@\[" skip="\v\\." end="\v\]" containedin=firrtlNode,firrtlInvalid,firrtlConnect,firrtlDec,firrtlInst,firrtlReg,firrtlMPort,firrtlSim,firrtlSkip,firrtlWhen
+syntax region firrtlString start=/\v"/ skip=/\v\\./ end=/\v"/ containedin=firrtlLiteral,firrtlPrintf,firrtlDec,firrtlInst,firrtlReg,firrtlMPort,firrtlSim,firrtlWhen
+syntax match firrtlNumber "\v<\d+>" containedin=firrtlConnect,firrtlInvalid,firrtlNode,firrtlDec,firrtlInst,firrtlReg,firrtlMPort,firrtlSim,firrtlLiteral,firrtlWhen
 
 "===== Links =====
 " Types
